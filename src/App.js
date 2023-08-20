@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
+import Quiz from './quiz';
+import Setup from './setup';
+import tinycolor from 'tinycolor2';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [quizConfig, setQuizConfig] = useState(null);
+
+    const handleStartQuiz = (category, difficulty, length) => {
+        setQuizConfig({ category, difficulty, length });
+    };
+
+    const restartQuiz = () => {
+        setQuizConfig(null);
+    };
+
+    const setHoverColor = () => {
+        const primaryColor = getComputedStyle(document.documentElement)
+            .getPropertyValue('--primary-color').trim();
+        const hoverColor = tinycolor(primaryColor).darken(10).toString();
+
+        document.documentElement.style.setProperty('--primary-hover-color', hoverColor);
+    }
+    useEffect(() => {
+        setHoverColor();
+    }, []);
+
+
+    return (
+        <div>
+            <div className="app-header">MathiQuiz</div>
+            {!quizConfig ? <Setup onStartQuiz={handleStartQuiz} /> : <Quiz config={quizConfig} onRestart={restartQuiz} />
+            }
+        </div>
+    );
 }
 
 export default App;
