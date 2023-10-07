@@ -29,7 +29,7 @@ function App() {
 
     return (
         <div>
-            <div className="app-header">MathiQuiz</div>
+            <div className="app-header">QuickQuiz</div>
             {!quizConfig ? <Setup onStartQuiz={handleStartQuiz} /> : <Quiz config={quizConfig} onRestart={restartQuiz} />
             }
         </div>

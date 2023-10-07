@@ -106,7 +106,6 @@ function Quiz({config, onRestart}) {
                     </button>
                 ))}
             </div>
-            A little quiz generating tool for the quiz mistress lobster of my life.
         </div>
     );
 }
