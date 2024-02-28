@@ -23,7 +23,7 @@ function Setup({ onStartQuiz }) {
             <h2>Quiz Setup</h2>
             <div className="setup-section">
                 <label>Category:</label>
-                <select value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)}>
+                <select id="category" value={selectedCategory} onChange={e => setSelectedCategory(e.target.value)}>
                     <option value="">Any Category</option>
                     {categories.map(category => (
                         <option key={category.id} value={category.id}>
@@ -34,7 +34,7 @@ function Setup({ onStartQuiz }) {
             </div>
             <div className="setup-section">
                 <label>Difficulty:</label>
-                <select value={difficulty} onChange={e => setDifficulty(e.target.value)}>
+                <select id="difficulty" value={difficulty} onChange={e => setDifficulty(e.target.value)}>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
                     <option value="hard">Hard</option>
@@ -44,13 +44,14 @@ function Setup({ onStartQuiz }) {
                 <label>Number of Questions:</label>
                 <input
                     type="number"
+                    id="amount"
                     value={quizLength}
                     onChange={e => setQuizLength(e.target.value)}
                     min="1"
                     max="50"
                 />
             </div>
-            <button className="start-button" onClick={handleStartQuiz}>
+            <button id="btnStart" className="start-button" onClick={handleStartQuiz}>
                 Start Quiz
             </button>
         </div>
